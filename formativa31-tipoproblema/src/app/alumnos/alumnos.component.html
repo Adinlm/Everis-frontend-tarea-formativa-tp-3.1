@@ -1,0 +1,93 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Lista de alumnos</a>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md8 mt-4">
+            <ul class="list-group">
+                <span class="badge bg-primary"><h4>Todos los alumnos:</h4></span>
+                <!--Muestra los elementos en el arreglo de alumnos -->
+                <li *ngFor="let alumno of alumnoArray" class="list-group-item list-group-item-action"
+                    (click)="abrirparaEditar(alumno)" [class.active]="alumno == selectedAlumno">
+                    <span class="badge bg-primary">{{alumno.id}}</span> {{alumno.rut}} | {{alumno.name}} |
+                    {{alumno.lastname}} | {{alumno.edad}} | {{alumno.curso}} | {{alumno.promedio}}
+                </li>
+            </ul>
+
+            <ul class="list-group">
+                <span class="badge bg-success"><h4>Alumnos aprobados:</h4></span>
+                <!--Muestra los elementos en el arreglo de alumnos -->
+                <li *ngFor="let alumno of alumnoArrayapr" class="list-group-item list-group-item-action"
+                    (click)="abrirparaEditar(alumno)" [class.active]="alumno == selectedAlumno">
+                    <span class="badge bg-success">{{alumno.id}}</span> {{alumno.rut}} | {{alumno.name}} |
+                    {{alumno.lastname}} | {{alumno.edad}} | {{alumno.curso}} | {{alumno.promedio}}
+                </li>
+            </ul>
+
+            <ul class="list-group">
+                <span class="badge bg-danger"><h4>Alumnos reprobados:</h4></span>
+                <!--Muestra los elementos en el arreglo de alumnos -->
+                <li *ngFor="let alumno of alumnoArrayrep" class="list-group-item list-group-item-action"
+                    (click)="abrirparaEditar(alumno)" [class.active]="alumno == selectedAlumno">
+                    <span class="badge bg-danger">{{alumno.id}}</span> {{alumno.rut}} | {{alumno.name}} |
+                    {{alumno.lastname}} | {{alumno.edad}} | {{alumno.curso}} | {{alumno.promedio}}
+                </li>
+            </ul>
+
+            <!-- margen top para el formulario -->
+            <div class="card mt-4">
+                <div class="card-body">
+                    <div class="card-title"></div>
+                    Ingresa a un nuevo alumno
+
+                </div>
+                <div class="form-group mt-2">
+                    <input type="text" [(ngModel)]="selectedAlumno.rut" placeholder="Inserta el RUT"
+                        class="form-control">
+                </div>
+                <div class="form-group mt-2">
+                    <input type="text" [(ngModel)]="selectedAlumno.name" placeholder="Inserta un nombre"
+                        class="form-control">
+                </div>
+                <div class="form-group mt-2">
+                    <input type="text" [(ngModel)]="selectedAlumno.lastname" placeholder="Inserta un apellido"
+                        class="form-control">
+                </div>
+                <div class="form-group mt-2">
+                    <input type="number" [(ngModel)]="selectedAlumno.edad" placeholder="Agrega la edad"
+                        class="form-control">
+                </div>
+                <div class="form-group mt-2">
+                    <input type="text" [(ngModel)]="selectedAlumno.curso" placeholder="Agrega el curso"
+                        class="form-control">
+                </div>
+                <div class="form-group mt-2">
+                    <input type="number" [(ngModel)]="selectedAlumno.promedio" placeholder="Agrega una nota"
+                        class="form-control">
+                </div>
+
+                <button (click)="agregarEditar()" class="btn btn-primary">
+                    Agregar
+                </button>
+                <!-- El boton eliminar solo se aparecera si hay un elemento
+            seleccionado -->
+                <button *ngIf="selectedAlumno.id !== 0 && selectedAlumno.promedio < 4" class="btn btn-danger" (click)="borrar()">
+                   
+                        Eliminar
+                    
+                </button>
+
+            </div>
+
+        </div>
+        <div class="col-md4">
+            <div class="col-md-12 mt-5 text-center">
+                <img width="200" alt="Educacion"
+                    src="https://images.template.net/wp-content/uploads/2016/08/05122141/Science-Education-Icons.jpg">
+
+            </div>
+
+        </div>
+    </div>
+</div>

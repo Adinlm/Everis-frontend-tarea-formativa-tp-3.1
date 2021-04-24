@@ -1,0 +1,33 @@
+<div class="card text-dark bg-light mb-3" id="productos">
+    <div class="card-header">
+        <h5 class="card-title">Productos en stock</h5>
+    </div>
+
+    <div class="card-body">
+        <table class="table table-hover align-bottom">
+            <thead class="fw-bold">
+                <td>Código</td>
+                <td>Nombre</td>
+                <td>Precio</td>
+                <td>Descripción</td>
+                <td>Acción</td>
+            </thead>
+            <tbody>
+                <tr *ngFor="let producto of productos">
+                    <td>{{producto.codigo}}</td>
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.precio}}</td>
+                    <td>{{producto.descripcion}}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-success"><i
+                                class="fas fa-cart-arrow-down"></i></button>
+                        &nbsp;<button type="button" class="btn btn-outline-info"><i class="fas fa-pen"></i></button>
+                        &nbsp;<button type="button" class="btn btn-outline-danger"><i
+                                class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
